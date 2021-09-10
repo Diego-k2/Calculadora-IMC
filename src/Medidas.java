@@ -1,34 +1,44 @@
+import java.util.Scanner;
 
 public class Medidas {
 	
-	Double peso;
-	Double altura;
-	Double imc;
+	String peso;
+	String altura;
+	
+	Scanner entrada = new Scanner (System.in);
 	
 	
-	void imc() {
-		
-		imc = peso / Math.pow(altura, 2);
-		
-		System.out.printf("Seu IMC foi: %.2f Kg/m²", imc);
-		
-		if (imc < 18.5) {
-			System.out.println("Magreza");	
-		}
-		
-		else if (imc > 18.5 && imc < 24.9 ) {
-			System.out.println("Normal");
-		}
-		
-		else if (imc > 24.9 && imc < 30) {
-			System.out.println("Sobrepeso");
-		}
-		
-		else if (imc > 30) {
-			System.out.println("Obesidade");
-		}
-		
+	double getPeso(){
+		double pesoG = Double.parseDouble(peso);
+		return pesoG;
 	}
 	
+	double getAltura(){
+		double alturaG = Double.parseDouble(altura);
+		return alturaG;
+	}
+	
+	double retornaImc(){
+		double imcalculo = getPeso() / Math.pow(getAltura(), 2);
+		return imcalculo;	
+	}
+
+	String retornaFisico() {
+		
+			double imcalculo = getPeso() / Math.pow(getAltura(), 2);
+			String status = "";
+			
+			if (imcalculo < 18.5) {
+				status = "Magreza";	
+			}else if (imcalculo > 18.5 && imcalculo < 24.9 ) {
+				status = "Normal";
+			}else if (imcalculo > 24.9 && imcalculo < 30) {
+				 status = "Sobrepeso";
+			}else if (imcalculo > 30) {
+				 status = "Obesidade";
+			}
+			
+			return status;
+	}
 	
 }
